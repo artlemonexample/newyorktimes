@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <MagicalRecord/MagicalRecord.h>
+#import "LSNewsItemEntity+CoreDataClass.h"
+#import "LSNewsItemEntity+CoreDataProperties.h"
+
 
 @interface LSDataProvider : NSObject
 
@@ -16,6 +20,6 @@
 - (NSURL*)urlFromLink:(NSString*)link;
 
 - (void)loadImage:(NSString*)link completion:(void(^)(UIImage*))completion;
-- (void)loadListOfNews:(NSString*)link completion:(void (^)(NSArray*))completion;
+- (void)loadListOfNews:(NSString*)link category:(NSString *)category completion:(void (^)(NSArray*))completion;
 
 @end

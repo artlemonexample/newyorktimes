@@ -12,6 +12,7 @@
 #import "LSDataProvider.h"
 #import "LSNewsItem.h"
 
+
 @interface LSNewsListViewController ()
 
 @property (nonatomic, strong) NSArray *newsList;
@@ -25,8 +26,10 @@
     
     if (self.category) {
         
-        [[LSDataProvider sharedInstance] loadListOfNews:self.category.link completion:^(NSArray *newsList) {
-            self.newsList = newsList;
+        [[LSDataProvider sharedInstance] loadListOfNews:self.category.link category:self.category.title completion:^(NSArray *newsList) {
+            NSManagedObjectContext *context = [NSManagedObjectContext MR_rootSavingContext];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@""];
+            self.newsList = [LSNewsItemEntity MR_findAllWithPredicate:predicate inContext:context];
             [self.tableView reloadData];
         }];
     }

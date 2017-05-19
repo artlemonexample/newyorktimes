@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F5968DA1ECF51EA005786F1 /* NewYorkTimesReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F5968D81ECF51EA005786F1 /* NewYorkTimesReader.xcdatamodeld */; };
+		1F9865AA1ECF544E00291C0A /* LSNewsItemEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9865A81ECF544E00291C0A /* LSNewsItemEntity+CoreDataProperties.m */; };
 		6D1D1858A6C52811218B1430 /* libPods-NewYorkTimesReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACAEDECE694C0D2F0F3FAEE /* libPods-NewYorkTimesReader.a */; };
 		F08BA08C1ECB431E000A600B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F08BA08B1ECB431E000A600B /* main.m */; };
 		F08BA08F1ECB431E000A600B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F08BA08E1ECB431E000A600B /* AppDelegate.m */; };
@@ -29,6 +31,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F5968D91ECF51EA005786F1 /* NewYorkTimesReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewYorkTimesReader.xcdatamodel; sourceTree = "<group>"; };
+		1F9865A51ECF544E00291C0A /* LSNewsItemEntity+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LSNewsItemEntity+CoreDataClass.h"; sourceTree = "<group>"; };
+		1F9865A61ECF544E00291C0A /* LSNewsItemEntity+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LSNewsItemEntity+CoreDataClass.m"; sourceTree = "<group>"; };
+		1F9865A71ECF544E00291C0A /* LSNewsItemEntity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LSNewsItemEntity+CoreDataProperties.h"; sourceTree = "<group>"; };
+		1F9865A81ECF544E00291C0A /* LSNewsItemEntity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LSNewsItemEntity+CoreDataProperties.m"; sourceTree = "<group>"; };
 		3ACAEDECE694C0D2F0F3FAEE /* libPods-NewYorkTimesReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NewYorkTimesReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56DDFE98780D3B5BA1316EDE /* Pods-NewYorkTimesReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewYorkTimesReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewYorkTimesReader/Pods-NewYorkTimesReader.debug.xcconfig"; sourceTree = "<group>"; };
 		5C85D4F19514B121F9A983E2 /* Pods-NewYorkTimesReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewYorkTimesReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewYorkTimesReader/Pods-NewYorkTimesReader.release.xcconfig"; sourceTree = "<group>"; };
@@ -80,6 +87,18 @@
 				5C85D4F19514B121F9A983E2 /* Pods-NewYorkTimesReader.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		1F5968D71ECF51C1005786F1 /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				1F9865A51ECF544E00291C0A /* LSNewsItemEntity+CoreDataClass.h */,
+				1F9865A61ECF544E00291C0A /* LSNewsItemEntity+CoreDataClass.m */,
+				1F9865A71ECF544E00291C0A /* LSNewsItemEntity+CoreDataProperties.h */,
+				1F9865A81ECF544E00291C0A /* LSNewsItemEntity+CoreDataProperties.m */,
+				1F5968D81ECF51EA005786F1 /* NewYorkTimesReader.xcdatamodeld */,
+			);
+			name = CoreDataModels;
 			sourceTree = "<group>";
 		};
 		8E91E6E60E18EE623D706764 /* Frameworks */ = {
@@ -158,6 +177,7 @@
 		F08BA0A31ECB4415000A600B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1F5968D71ECF51C1005786F1 /* CoreDataModels */,
 				F08BA0BB1ECC17F2000A600B /* DomainModels */,
 				F08BA0BC1ECC1803000A600B /* LSDataProvider.h */,
 				F08BA0BD1ECC1803000A600B /* LSDataProvider.m */,
@@ -331,7 +351,9 @@
 				F08BA0AA1ECB4535000A600B /* LSNewsListViewController.m in Sources */,
 				F08BA0B31ECB4595000A600B /* LSNewsItem.m in Sources */,
 				F08BA08F1ECB431E000A600B /* AppDelegate.m in Sources */,
+				1F5968DA1ECF51EA005786F1 /* NewYorkTimesReader.xcdatamodeld in Sources */,
 				F08BA0A71ECB4524000A600B /* LSCategoriesViewController.m in Sources */,
+				1F9865AA1ECF544E00291C0A /* LSNewsItemEntity+CoreDataProperties.m in Sources */,
 				F08BA08C1ECB431E000A600B /* main.m in Sources */,
 				F08BA0BE1ECC1803000A600B /* LSDataProvider.m in Sources */,
 			);
@@ -493,6 +515,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1F5968D81ECF51EA005786F1 /* NewYorkTimesReader.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1F5968D91ECF51EA005786F1 /* NewYorkTimesReader.xcdatamodel */,
+			);
+			currentVersion = 1F5968D91ECF51EA005786F1 /* NewYorkTimesReader.xcdatamodel */;
+			path = NewYorkTimesReader.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F08BA07F1ECB431D000A600B /* Project object */;
 }

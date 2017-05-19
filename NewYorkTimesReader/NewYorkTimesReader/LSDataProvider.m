@@ -32,7 +32,7 @@ NSString * const kBaseURL   = @"http://rss.nytimes.com/services/xml/rss/nyt/";
     return result;
 }
 
-- (void)loadListOfNews:(NSString*)link completion:(void (^)(NSArray*))completion {
+- (void)loadListOfNews:(NSString*)link category:(NSString *)category completion:(void (^)(NSArray*))completion {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
@@ -43,30 +43,39 @@ NSString * const kBaseURL   = @"http://rss.nytimes.com/services/xml/rss/nyt/";
         return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         if (completion) {
-            completion([self newsArrayFromNYT:filePath]);
+            completion([self newsArrayFromNYT:filePath category:category]);
         }
     }];
     [downloadTask resume];
 }
 
 
-- (NSArray*)newsArrayFromNYT:(NSURL*)filePath {
+-   (NSArray*)newsArrayFromNYT:(NSURL*)filePath category:(NSString *)category {
+    NSManagedObjectContext *context=[NSManagedObjectContext MR_rootSavingContext];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@""];
+    [LSNewsItemEntity MR_deleteAllMatchingPredicate:predicate inContext:context];
+    
     NSError *error = nil;
     NSMutableArray *result = [NSMutableArray array];
     ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithData:[NSData dataWithContentsOfURL:filePath] error:&error];
     ONOXMLElement *channel = [document.rootElement firstChildWithTag:@"channel"];
     for (ONOXMLElement *element in channel.children) {
         if ([element.tag isEqualToString:@"item"]) {
-            LSNewsItem *newsItem = [LSNewsItem new];
+           // LSNewsItem *newsItem = [LSNewsItem new];
+            LSNewsItemEntity *newsItem = [LSNewsItemEntity MR_createEntityInContext:context];
             newsItem.title =  [element firstChildWithTag:@"title"].stringValue;
             newsItem.descr = [element firstChildWithTag:@"description"].stringValue;
             newsItem.creator = [element firstChildWithTag:@"creator"].stringValue;
             newsItem.link = [element firstChildWithTag:@"link"].stringValue;
             ONOXMLElement *url = [element firstChildWithTag:@"content"];
             newsItem.imageLink = url.attributes[@"url"];
-            [result addObject:newsItem];
+            newsItem.itemID = [newsItem.link copy];
+            newsItem.category = [category copy];
+           // [result addObject:newsItem];
+            
         }
     }
+    [context MR_saveToPersistentStoreAndWait];
     return [result copy];
 }
 
